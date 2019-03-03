@@ -1,8 +1,8 @@
 package be.stijnhooft.portal.portfolio.services;
 
-import be.stijnhooft.portal.portfolio.dtos.SearchResult;
 import be.stijnhooft.portal.portfolio.model.BlogPost;
 import be.stijnhooft.portal.portfolio.model.Project;
+import be.stijnhooft.portal.portfolio.model.SearchResult;
 import be.stijnhooft.portal.portfolio.mothers.BlogpostMother;
 import be.stijnhooft.portal.portfolio.mothers.ProjectMother;
 import be.stijnhooft.portal.portfolio.repositories.BlogPostRepository;
@@ -50,8 +50,8 @@ public class SearchServiceIntegrationTest {
         SearchResult searchResult = searchService.search("European authentication");
 
         // then
-        assertEquals(Arrays.asList(project1), searchResult.getProjects());
-        assertEquals(Arrays.asList(blogPost1), searchResult.getBlogPosts());
+        assertEquals(Arrays.asList(project1.toSummary()), searchResult.getProjects());
+        assertEquals(Arrays.asList(blogPost1.toSummary()), searchResult.getBlogPosts());
     }
 
     @Test
@@ -72,8 +72,8 @@ public class SearchServiceIntegrationTest {
         SearchResult searchResult = searchService.search("european autHentication");
 
         // then
-        assertEquals(Arrays.asList(project1), searchResult.getProjects());
-        assertEquals(Arrays.asList(blogPost1), searchResult.getBlogPosts());
+        assertEquals(Arrays.asList(project1.toSummary()), searchResult.getProjects());
+        assertEquals(Arrays.asList(blogPost1.toSummary()), searchResult.getBlogPosts());
     }
 
     @Test
@@ -94,8 +94,8 @@ public class SearchServiceIntegrationTest {
         SearchResult searchResult = searchService.search("Européan aüthentication");
 
         // then
-        assertEquals(Arrays.asList(project1), searchResult.getProjects());
-        assertEquals(Arrays.asList(blogPost1), searchResult.getBlogPosts());
+        assertEquals(Arrays.asList(project1.toSummary()), searchResult.getProjects());
+        assertEquals(Arrays.asList(blogPost1.toSummary()), searchResult.getBlogPosts());
     }
 
 }

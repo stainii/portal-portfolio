@@ -43,4 +43,7 @@ public class Project {
     @TextIndexed
     private List<String> tags;
 
+    public ProjectSummary toSummary() {
+        return new ProjectSummary(getName(), getDescription(), getThumbnail(), getRole());
+    }
 }

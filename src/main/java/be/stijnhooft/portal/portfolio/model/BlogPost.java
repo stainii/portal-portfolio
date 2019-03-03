@@ -41,4 +41,8 @@ public class BlogPost {
         return externalLink != null;
     }
 
+    public BlogPostSummary toSummary() {
+        return new BlogPostSummary(getName(), getDescription(), getThumbnail(), getPublishDate(), getExternalLink());
+    }
+
 }
