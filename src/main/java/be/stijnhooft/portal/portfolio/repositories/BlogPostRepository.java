@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface BlogPostRepository extends MongoRepository<BlogPost, String> {
     List<BlogPost> findAllBy(TextCriteria criteria);
+    List<BlogPost> findAllByOrderByPublishDateDesc();
 }

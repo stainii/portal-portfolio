@@ -12,9 +12,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 @DataMongoTest
 @RunWith(SpringRunner.class)
@@ -30,37 +31,28 @@ public class ProjectRepositoryTest {
 
     @Test
     public void findByIdWhenSuccess() {
-        // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
-        // then
-        assertEquals(project, projectRepository.findById(project.getId()).get());
+        Optional<Project> result = projectRepository.findById(project.getId());
+
+        assertTrue(result.isPresent());
+        assertEquals(project, result.get());
     }
 
     @Test
     public void findByIdWhenNotFound() {
-        // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
-        // then
         assertFalse(projectRepository.findById("non existing").isPresent());
     }
 
     @Test
     public void findByTagsWhenSearchingWithASingleTagAndFindingOneProject() {
-        // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
-        // then
         assertEquals(Arrays.asList(project), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny(project.getTags().get(0))));
         assertEquals(Arrays.asList(project), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny(project.getTags().get(1))));
     }
@@ -69,12 +61,13 @@ public class ProjectRepositoryTest {
     public void findByTagsWhenSearchingWithMultipleTagsAndFindingOneProject() {
         // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
+        // when
+        List<Project> result = projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny(project.getTags().get(0), project.getTags().get(1)));
+
         // then
-        assertEquals(Arrays.asList(project), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny(project.getTags().get(0), project.getTags().get(1))));
+        assertEquals(Arrays.asList(project), result);
     }
 
     @Test
@@ -82,13 +75,14 @@ public class ProjectRepositoryTest {
         // given
         Project project1 = ProjectMother.complete();
         Project project2 = ProjectMother.completeAlternative();
-
-        // when
         projectRepository.save(project1);
         projectRepository.save(project2);
 
+        // when
+        List<Project> result = projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("jpa"));
+
         // then
-        assertEquals(Arrays.asList(project1, project2), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("jpa")));
+        assertEquals(Arrays.asList(project1, project2), result);
     }
 
     @Test
@@ -96,85 +90,107 @@ public class ProjectRepositoryTest {
         // given
         Project project1 = ProjectMother.complete();
         Project project2 = ProjectMother.completeAlternative();
-
-        // when
         projectRepository.save(project1);
         projectRepository.save(project2);
 
+        // when
+        List<Project> result = projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("jpa", "docker"));
+
         // then
-        assertEquals(Arrays.asList(project2, project1), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("jpa", "docker")));
+        assertEquals(Arrays.asList(project2, project1), result);
     }
 
     @Test
     public void findWhenNotFound() {
         // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
+        // when
+        List<Project> result = projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("random"));
+
         // then
-        assertEquals(new ArrayList<>(), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("random")));
+        assertEquals(new ArrayList<>(), result);
     }
 
     @Test
     public void findByTitle() {
         // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
+        // when
+        List<Project> result = projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("unionvms"));
+
         // then
-        assertEquals(Arrays.asList(project), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("unionvms")));
+        assertEquals(Arrays.asList(project), result);
     }
 
     @Test
     public void findByDescription() {
         // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
+        // when
+        List<Project> result = projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("[description]"));
+
         // then
-        assertEquals(Arrays.asList(project), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("[description]")));
+        assertEquals(Arrays.asList(project), result);
     }
 
     @Test
     public void findByDetails() {
         // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
+        // when
+        List<Project> result = projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("official"));
+
         // then
-        assertEquals(Arrays.asList(project), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("official")));
+        assertEquals(Arrays.asList(project), result);
     }
 
     @Test
     public void findByRole() {
         // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
+        // when
+        List<Project> result = projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("developer", "lead"));
+
         // then
-        assertEquals(Arrays.asList(project), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("developer", "lead")));
+        assertEquals(Arrays.asList(project), result);
     }
 
     @Test
     public void findByCompany() {
         // given
         Project project = ProjectMother.complete();
-
-        // when
         projectRepository.save(project);
 
+        // when
+        List<Project> result = projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("developer", "Agriculture"));
+
         // then
-        assertEquals(Arrays.asList(project), projectRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("developer", "Agriculture")));
+        assertEquals(Arrays.asList(project), result);
+    }
+
+    @Test
+    public void findAllOrderByStartDateDesc() {
+        // given
+        Project project1 = ProjectMother.complete();
+        Project project2 = ProjectMother.completeAlternative();
+        projectRepository.save(project1);
+        projectRepository.save(project2);
+
+        // when
+        List<Project> result = projectRepository.findAllByOrderByStartDateDesc();
+
+        // then
+        assertEquals(Arrays.asList(project1, project2), result);
     }
 
 }

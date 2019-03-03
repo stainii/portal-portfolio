@@ -5,7 +5,7 @@ import be.stijnhooft.portal.portfolio.model.BlogPost;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-public class BlogpostMother {
+public class BlogPostMother {
 
     public static BlogPost complete() {
         return new BlogPost("alternative-ways-to-log-in",

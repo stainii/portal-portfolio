@@ -3,7 +3,7 @@ package be.stijnhooft.portal.portfolio.services;
 import be.stijnhooft.portal.portfolio.model.BlogPost;
 import be.stijnhooft.portal.portfolio.model.Project;
 import be.stijnhooft.portal.portfolio.model.SearchResult;
-import be.stijnhooft.portal.portfolio.mothers.BlogpostMother;
+import be.stijnhooft.portal.portfolio.mothers.BlogPostMother;
 import be.stijnhooft.portal.portfolio.mothers.ProjectMother;
 import be.stijnhooft.portal.portfolio.repositories.BlogPostRepository;
 import be.stijnhooft.portal.portfolio.repositories.ProjectRepository;
@@ -38,8 +38,8 @@ public class SearchServiceIntegrationTest {
         Project project1 = ProjectMother.complete();
         Project project2 = ProjectMother.completeAlternative();
 
-        BlogPost blogPost1 = BlogpostMother.complete();
-        BlogPost blogPost2 = BlogpostMother.completeAlternative();
+        BlogPost blogPost1 = BlogPostMother.complete();
+        BlogPost blogPost2 = BlogPostMother.completeAlternative();
 
         projectRepository.save(project1);
         projectRepository.save(project2);
@@ -60,8 +60,8 @@ public class SearchServiceIntegrationTest {
         Project project1 = ProjectMother.complete();
         Project project2 = ProjectMother.completeAlternative();
 
-        BlogPost blogPost1 = BlogpostMother.complete();
-        BlogPost blogPost2 = BlogpostMother.completeAlternative();
+        BlogPost blogPost1 = BlogPostMother.complete();
+        BlogPost blogPost2 = BlogPostMother.completeAlternative();
 
         projectRepository.save(project1);
         projectRepository.save(project2);
@@ -82,8 +82,8 @@ public class SearchServiceIntegrationTest {
         Project project1 = ProjectMother.complete();
         Project project2 = ProjectMother.completeAlternative();
 
-        BlogPost blogPost1 = BlogpostMother.complete();
-        BlogPost blogPost2 = BlogpostMother.completeAlternative();
+        BlogPost blogPost1 = BlogPostMother.complete();
+        BlogPost blogPost2 = BlogPostMother.completeAlternative();
 
         projectRepository.save(project1);
         projectRepository.save(project2);

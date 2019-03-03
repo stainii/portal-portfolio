@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface ProjectRepository extends MongoRepository<Project, String> {
     List<Project> findAllBy(TextCriteria criteria);
+    List<Project> findAllByOrderByStartDateDesc();
 }
