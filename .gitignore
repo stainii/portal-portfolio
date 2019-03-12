@@ -7,8 +7,8 @@
 /src/main/resources/public
 
 # dependencies
-/node_modules
-/node
+src/main/web/node_modules/
+src/main/web/node/
 
 # IDEs and editors
 /.idea
@@ -47,4 +47,4 @@ Thumbs.db
 
 target/
 !.mvn/wrapper/maven-wrapper.jar
-
+src/main/web/src/assets/data/
