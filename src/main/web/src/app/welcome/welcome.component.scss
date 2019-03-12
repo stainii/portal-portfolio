@@ -1,0 +1,45 @@
+nav {
+    text-align: center;
+}
+a {
+    display: inline-block;
+    padding: 100px 25px;
+    width: 250px;
+    height: 100px;
+    line-height: 100px;
+    margin: 50px;
+    background-color: #dddddd;
+    vertical-align: top;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+    background-blend-mode: normal;
+    background-size: cover;
+}
+.blog {
+    background-image: url("../../assets/images/blog.jpg");
+}
+.about-me {
+    background-image: url("../../assets/images/me2.jpg");
+}
+.projects {
+    background-image: url("../../assets/images/colleagues.jpg");
+}
+.search {
+    background-image: url("../../assets/images/search.jpg");
+}
+a:hover, a:active, a:focus {
+    cursor: pointer;
+    background-color: #c2524c;
+    background-blend-mode: multiply;
+
+}
+
+@media only screen and (max-width: 800px) {
+    a {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

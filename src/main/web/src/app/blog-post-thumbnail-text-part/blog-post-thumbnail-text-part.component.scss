@@ -1,0 +1,24 @@
+.role .label {
+    font-weight: bold;
+}
+.role .content {
+    text-transform: lowercase;
+}
+button {
+    color: #333;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -webkit-transition: border-color 0.5s;
+    transition: border-color 0.5s;
+}
+button:hover, button:active {
+    border: 1px solid #111111;
+}
+.publishDate {
+    font-style: italic;
+    font-size: 10pt;
+}

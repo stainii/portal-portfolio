@@ -1,0 +1,13 @@
+<div class="animated fadeIn">
+
+    <portfolio-big-header *ngIf="onWelcomePage"></portfolio-big-header>
+
+    <div class="emptySpaceForHeader" *ngIf="!onWelcomePage"></div>
+    <portfolio-normal-header *ngIf="!onWelcomePage"></portfolio-normal-header>
+
+    <div id="main-content">
+        <router-outlet></router-outlet>
+    </div>
+
+    <portfolio-footer></portfolio-footer>
+</div>

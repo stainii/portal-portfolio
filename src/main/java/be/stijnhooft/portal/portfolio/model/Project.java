@@ -44,6 +44,6 @@ public class Project {
     private List<String> tags;
 
     public ProjectSummary toSummary() {
-        return new ProjectSummary(getName(), getDescription(), getThumbnail(), getRole());
+        return new ProjectSummary(getId(), getName(), getDescription(), getThumbnail(), getRole());
     }
 }

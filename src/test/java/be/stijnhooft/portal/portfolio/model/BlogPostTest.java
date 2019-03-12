@@ -24,6 +24,7 @@ public class BlogPostTest {
     public void toSummary() {
         BlogPost blogPost = BlogPostMother.complete();
         BlogPostSummary summary = blogPost.toSummary();
+        assertEquals(blogPost.getId(), summary.getId());
         assertEquals(blogPost.getName(), summary.getName());
         assertEquals(blogPost.getDescription(), summary.getDescription());
         assertEquals(blogPost.getThumbnail(), summary.getThumbnail());

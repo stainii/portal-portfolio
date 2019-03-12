@@ -11,6 +11,7 @@ public class ProjectTest {
     public void toSummary() {
         Project project = ProjectMother.complete();
         ProjectSummary summary = project.toSummary();
+        assertEquals(project.getId(), summary.getId());
         assertEquals(project.getName(), summary.getName());
         assertEquals(project.getDescription(), summary.getDescription());
         assertEquals(project.getThumbnail(), summary.getThumbnail());

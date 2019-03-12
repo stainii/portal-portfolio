@@ -1,0 +1,7 @@
+<div *ngIf="project">
+    <h1>{{project.name}}</h1>
+    <p class="tags">
+        <span class="tag" *ngFor="let tag of project.tags">#{{tag}}</span>
+    </p>
+    <markdown [data]="project.details"></markdown>
+</div>

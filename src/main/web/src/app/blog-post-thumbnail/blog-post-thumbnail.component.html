@@ -1,0 +1,9 @@
+<div class="table two-cells" *ngIf="blogPost">
+    <div class="cell">
+        <portfolio-blog-post-thumbnail-text-part [blogPost]="blogPost" *ngIf="allowedToBeAlternative && alternative"></portfolio-blog-post-thumbnail-text-part>
+        <div class="medium"><img alt="" [src]="blogPost.thumbnail" *ngIf="!allowedToBeAlternative || !alternative"/></div>
+    </div><div class="cell">
+    <portfolio-blog-post-thumbnail-text-part [blogPost]="blogPost" *ngIf="!allowedToBeAlternative || !alternative"></portfolio-blog-post-thumbnail-text-part>
+    <div class="medium"><img alt="" [src]="blogPost.thumbnail" *ngIf="allowedToBeAlternative && alternative" /></div>
+</div>
+</div>

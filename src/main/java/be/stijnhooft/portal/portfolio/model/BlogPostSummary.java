@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 @ToString
 public class BlogPostSummary {
+    private String id;
     private String name;
     private String description;
     private String thumbnail;

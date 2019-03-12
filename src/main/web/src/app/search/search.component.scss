@@ -1,0 +1,88 @@
+form {
+    display: table;
+    width: 100%;
+    border-bottom: 1px solid #BBB;
+    margin: 2em 0;
+}
+.left {
+    display: table-cell;
+    vertical-align: bottom;
+
+    height: 67px;
+    width: 100%;
+}
+.right {
+    display: table-cell;
+    vertical-align: bottom;
+
+    height: 67px;
+    width: 63px;
+}
+input[type="text"] {
+    display: inline-block;
+    width: 100%;
+    padding: 0;
+
+    font-size: 60px;
+    line-height: 60px;
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    color: #555;
+
+    border: none;
+
+    background: none;
+    z-index: 3;
+    cursor: pointer;
+}
+input[type="text"]:focus {
+    cursor: text;
+    outline: none;
+}
+
+input[type="submit"] {
+    display: inline-block;
+    width: 63px;
+    height: 67px;
+
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFU1NT9fX1lJSUXl5e1dXVfn5+c3Nz6urqv7+/tLS0iYmJqampn5+fysrK39/faWlp////Vi4ZywAAABF0Uk5T/////////////////////wAlrZliAAABLklEQVR42rSWWRbDIAhFHeOUtN3/ags1zaA4cHrKZ8JFRHwoXkwTvwGP1Qo0bYObAPwiLmbNAHBWFBZlD9j0JxflDViIObNHG/Do8PRHTJk0TezAhv7qloK0JJEBh+F8+U/hopIELOWfiZUCDOZD1RADOQKA75oq4cvVkcT+OdHnqqpQCITWAjnWVgGQUWz12lJuGwGoaWgBKzRVBcCypgUkOAoWgBX/L0CmxN40u6xwcIJ1cOzWYDffp3axsQOyvdkXiH9FKRFwPRHYZUaXMgPLeiW7QhbDRciyLXJaKheCuLbiVoqx1DVRyH26yb0hsuoOFEPsoz+BVE0MRlZNjGZcRQyHYkmMp2hBTIzdkzCTc/pLqOnBrk7/yZdAOq/q5NPBH1f7x7fGP4C3AAMAQrhzX9zhcGsAAAAASUVORK5CYII=) center center no-repeat;
+
+    border: none;
+    cursor: pointer;
+
+    opacity: 0.4;
+
+    text-indent: 10000px;
+    transition: opacity .4s ease;
+}
+input[type="submit"]:disabled {
+    cursor: not-allowed;
+}
+input[type="submit"]:disabled:hover, input[type="submit"]:disabled:active, input[type="submit"]:disabled:focus {
+    opacity: 0.4;
+}
+input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus {
+    opacity: 0.8;
+}
+
+#search-results {
+    display:block;
+    min-height: 100%;
+}
+
+@media screen and (max-width: 700px) {
+    input[type="text"] {
+        font-size: 25px;
+        line-height: 25px;
+        font-weight: 300;
+    }
+}
+
+portfolio-project-thumbnail {
+    display: block;
+    margin-bottom: 3rem;
+}
+portfolio-blog-post-thumbnail {
+    display: block;
+    margin-bottom: 3rem;
+}

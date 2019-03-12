@@ -42,7 +42,7 @@ public class BlogPost {
     }
 
     public BlogPostSummary toSummary() {
-        return new BlogPostSummary(getName(), getDescription(), getThumbnail(), getPublishDate(), getExternalLink());
+        return new BlogPostSummary(getId(), getName(), getDescription(), getThumbnail(), getPublishDate(), getExternalLink());
     }
 
 }

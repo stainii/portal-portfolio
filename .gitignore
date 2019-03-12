@@ -4,7 +4,7 @@
 /dist
 /tmp
 /out-tsc
-/src/main/public
+/src/main/resources/public
 
 # dependencies
 /node_modules

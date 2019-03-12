@@ -1,0 +1,13 @@
+<div id="container" (clickOutside)="closeMobileMenu()">
+    <a href="#" (click)="toggleMobileMenu($event)" id="mobile-menu-icon"></a>
+    <nav [class.animated]="isMobileMenuOpen"
+         [class.slideInRight]="isMobileMenuOpen"
+         [class.open]="isMobileMenuOpen">
+        <div id="navContainer">
+            <a routerLink="/about-me" (click)="closeMobileMenu()">get to know me</a>
+            <a routerLink="/projects" (click)="closeMobileMenu()">projects I'm proud of</a>
+            <a routerLink="/blog" (click)="closeMobileMenu()">some thoughts</a>
+            <a routerLink="/search" (click)="closeMobileMenu()">something else?</a>
+        </div>
+    </nav>
+</div>
