@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
@@ -21,6 +22,7 @@ import static org.junit.Assert.assertEquals;
 
 @DataMongoTest(includeFilters = @ComponentScan.Filter(Service.class))
 @RunWith(SpringRunner.class)
+@TestPropertySource("classpath:application-test.properties")
 public class SearchServiceIntegrationTest {
 
     @Autowired

@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.data.mongodb.core.query.TextCriteria;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import static org.junit.Assert.*;
 
 @DataMongoTest
 @RunWith(SpringRunner.class)
+@TestPropertySource("classpath:application-test.properties")
 public class BlogPostRepositoryTest {
 
     @Autowired
@@ -28,6 +30,8 @@ public class BlogPostRepositoryTest {
     public void init() {
         blogPostRepository.deleteAll();
     }
+
+
 
     @Test
     public void findByIdWhenSuccess() {
