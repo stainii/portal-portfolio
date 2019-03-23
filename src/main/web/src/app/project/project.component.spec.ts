@@ -30,4 +30,42 @@ describe('ProjectComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should show the project\'s title', () => {
+        component.project = {
+            id: "test-project",
+            name: "test project",
+            description: null,
+            thumbnail: null,
+            role: null,
+            details: null,
+            startDate: null,
+            endDate: null,
+            company: null,
+            tags: []
+        };
+        fixture.detectChanges();
+
+        expect(fixture.nativeElement.querySelector("h1").textContent).toContain("test project");
+    });
+
+    it('should show the project\'s tags', () => {
+        component.project = {
+            id: "test-project",
+            name: "test project",
+            description: null,
+            thumbnail: null,
+            role: null,
+            details: null,
+            startDate: null,
+            endDate: null,
+            company: null,
+            tags: ["test", "karma", "angular"]
+        };
+        fixture.detectChanges();
+
+        expect(fixture.nativeElement.querySelector(".tags").textContent).toContain("#test");
+        expect(fixture.nativeElement.querySelector(".tags").textContent).toContain("#karma");
+        expect(fixture.nativeElement.querySelector(".tags").textContent).toContain("#angular");
+    });
 });

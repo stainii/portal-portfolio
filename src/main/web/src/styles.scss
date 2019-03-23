@@ -18,14 +18,17 @@ h1 {
     font-size: 2rem;
     margin-bottom: 2rem;
 }
+h2 {
+    font-size: 1.5rem;
+}
 h3 {
-    font-size: 1.2em;
+    font-size: 1.3rem;
 }
 h4 {
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 h5 {
-    font-size: 1em;
+    font-size: 1rem;
     text-decoration: underline;
 }
 portfolio-root {
@@ -222,6 +225,27 @@ markdown {
     h2, h3, h4, h5 {
         margin-top: 30px;
     }
+    code.no-wrap {
+        display: block;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+    .mark-red {
+        background-color: red;
+        color: white;
+    }
+    .mark-blue {
+        background-color: blue;
+        color: white;
+    }
+    .mark-green {
+        background-color: green;
+        color: white;
+    }
+    .mark-yellow {
+        background-color: yellow;
+        color: black;
+    }
 }
 @media only screen and (min-width: 500px) {
     table {
@@ -239,6 +263,12 @@ markdown {
 
     markdown {
         img {
+            white-space: pre;
+            max-width: 100%;
+            margin: 10px 1%;
+        }
+
+        video {
             white-space: pre;
             max-width: 100%;
             margin: 10px 1%;
@@ -274,6 +304,12 @@ markdown {
 @media only screen and (max-width: 600px) {
     markdown {
         img {
+            white-space: pre;
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        video {
             white-space: pre;
             max-width: 100%;
             margin: 10px 0;
