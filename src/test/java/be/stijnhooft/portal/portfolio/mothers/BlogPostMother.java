@@ -496,12 +496,16 @@ public class BlogPostMother {
     }
 
     public static BlogPost completeAlternative() {
+        return completeAlternative(LocalDate.of(2017, 11, 11));
+    }
+
+    public static BlogPost completeAlternative(LocalDate publishDate) {
         return new BlogPost("experiments-with-arquillian",
             "Experiments with Arquillian on Wildfly",
             "For my current project, the need for deep integration tests rises. To prepare myself, I've done some experiments.",
             "<img src=\"data/projects/colruyt/colruyt.png\" alt=\"\" />",
             null,
-            LocalDate.of(2017, 11, 11),
+            publishDate,
             Arrays.asList("Arquillian", "Integration Tests", "programming"),
             "https://github.com/stainii/arquillian-wildfly-example/blob/master/README.md");
     }
