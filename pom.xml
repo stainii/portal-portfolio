@@ -50,7 +50,6 @@
 
         <!-- default parameters used in the application. Override these with a Maven profile -->
         <environment>dev</environment>
-        <eureka.server.uri>http://localhost:8761</eureka.server.uri>
         <npm-build-command>run build</npm-build-command>
 
         <!-- versions of dependencies -->
@@ -157,6 +156,9 @@
                 <configuration>
                     <nonFilteredFileExtensions>
                         <nonFilteredFileExtension>ico</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>jpg</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>png</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>mp4</nonFilteredFileExtension>
                     </nonFilteredFileExtensions>
                 </configuration>
             </plugin>
@@ -234,7 +236,6 @@
             <id>production</id>
             <properties>
                 <environment>production</environment>
-                <eureka.server.uri>http://portal-eureka:8761</eureka.server.uri>
                 <npm-build-command>run build-prod</npm-build-command>
             </properties>
             <build>
