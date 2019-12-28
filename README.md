@@ -12,7 +12,6 @@ The front-enc can be found in `src/main/web`.
 
 **All commands below need to be executed in that folder.**
 
-
 ### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -36,3 +35,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+### Release
+To release a module, this project makes use of the JGitflow plugin.
+More information can be found [here](https://gist.github.com/lemiorhan/97b4f827c08aed58a9d8).
+
+No npm release is made, only a Maven release.
+
+At the moment, releases are made on a local machine. No Jenkins job has been made (yet).
