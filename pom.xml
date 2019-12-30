@@ -4,7 +4,7 @@
 
     <groupId>be.stijnhooft</groupId>
     <artifactId>portal-portfolio</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>portal-portfolio</name>
@@ -50,7 +50,6 @@
 
         <!-- default parameters used in the application. Override these with a Maven profile -->
         <environment>dev</environment>
-        <eureka.server.uri>http://localhost:8761</eureka.server.uri>
         <npm-build-command>run build</npm-build-command>
 
         <!-- versions of dependencies -->
@@ -157,6 +156,9 @@
                 <configuration>
                     <nonFilteredFileExtensions>
                         <nonFilteredFileExtension>ico</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>jpg</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>png</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>mp4</nonFilteredFileExtension>
                     </nonFilteredFileExtensions>
                 </configuration>
             </plugin>
@@ -170,8 +172,8 @@
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.4</version>
                 <configuration>
-                    <nodeVersion>v10.7.0</nodeVersion>
-                    <npmVersion>6.8.0</npmVersion>
+                    <nodeVersion>v12.13.0</nodeVersion>
+                    <npmVersion>6.13.2</npmVersion>
                     <workingDirectory>src/main/web/</workingDirectory>
                 </configuration>
                 <executions>
@@ -234,7 +236,6 @@
             <id>production</id>
             <properties>
                 <environment>production</environment>
-                <eureka.server.uri>http://portal-eureka:8761</eureka.server.uri>
                 <npm-build-command>run build-prod</npm-build-command>
             </properties>
             <build>
@@ -242,7 +243,7 @@
                     <plugin>
                         <groupId>com.spotify</groupId>
                         <artifactId>dockerfile-maven-plugin</artifactId>
-                        <version>1.4.8</version>
+                        <version>1.4.13</version>
                         <executions>
                             <execution>
                                 <id>default</id>
