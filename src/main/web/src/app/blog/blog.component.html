@@ -1,6 +1,0 @@
-<h1>Some thoughts</h1>
-<div *ngFor="let blogPost of blogPosts$ | async; let index = index;">
-    <portfolio-blog-post-thumbnail  [blogPost]="blogPost"
-                                    [alternative]="index%2==1">
-    </portfolio-blog-post-thumbnail>
-</div>

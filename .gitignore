@@ -7,9 +7,8 @@
 /src/main/resources/public
 
 # dependencies
-src/main/web/node_modules/
-src/main/web/node/
-src/main/web/coverage/
+front-end/node_modules
+front-end/coverage/
 
 # IDEs and editors
 /.idea
@@ -29,23 +28,18 @@ src/main/web/coverage/
 !.vscode/extensions.json
 
 # misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-testem.log
-/typings
-
-# e2e
-/e2e/*.js
-/e2e/*.map
+/front-end/.sass-cache
+/front-end/connect.lock
+/front-end/coverage
+/front-end/libpeerconnection.log
+/front-end/npm-debug.log
+/front-end/testem.log
+/front-end/typings
 
 # System Files
 .DS_Store
 Thumbs.db
 
-
 target/
 !.mvn/wrapper/maven-wrapper.jar
-src/main/web/src/assets/data/
+front-end/src/assets/data/

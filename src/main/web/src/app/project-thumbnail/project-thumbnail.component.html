@@ -1,9 +1,0 @@
-<div class="table two-cells" *ngIf="project">
-    <div class="cell">
-        <portfolio-project-thumbnail-text-part [project]="project" *ngIf="allowedToBeAlternative && alternative"></portfolio-project-thumbnail-text-part>
-        <div class="medium"><img [src]="project.thumbnail" *ngIf="!allowedToBeAlternative || !alternative" alt="" /></div>
-    </div><div class="cell">
-    <portfolio-project-thumbnail-text-part [project]="project" *ngIf="!allowedToBeAlternative || !alternative"></portfolio-project-thumbnail-text-part>
-    <div class="medium"><img [src]="project.thumbnail" *ngIf="allowedToBeAlternative && alternative" alt="" /></div>
-</div>
-</div>
