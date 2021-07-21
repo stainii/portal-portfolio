@@ -1,0 +1,9 @@
+portfolio-blog-post-thumbnail {
+    display: block;
+    margin-top: 100px;
+}
+@media only screen and (max-width: 800px) {
+    portfolio-blog-post-thumbnail {
+        margin-bottom: 3rem;
+    }
+}

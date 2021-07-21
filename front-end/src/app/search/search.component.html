@@ -1,0 +1,46 @@
+<form   #form="ngForm"
+        (submit)="search(query)"
+        autocomplete="on"
+        novalidation>
+    <div class="left">
+        <input  id="search"
+                name="query"
+                required
+                [(ngModel)]="query"
+                type="text"
+                placeholder="What're you looking for?"
+                autofocus>
+    </div>
+    <div class="right">
+        <input id="search_submit"
+               type="submit"
+               [disabled]="form.invalid">
+    </div>
+</form>
+
+<div id="search-results" *ngIf="searchResults">
+
+    <p *ngIf="searchResults.projects.length == 0
+        && searchResults.blogPosts.length == 0">
+        Nothing found :(
+    </p>
+
+    <section *ngIf="searchResults.projects.length > 0">
+        <h1>Projects</h1>
+        <div *ngFor="let project of searchResults.projects; let index = index;">
+            <portfolio-project-thumbnail   [project]="project"
+                                 [alternative]="index%2==1">
+            </portfolio-project-thumbnail>
+        </div>
+    </section>
+
+    <section *ngIf="searchResults.blogPosts.length > 0">
+        <h1>Blogposts</h1>
+        <div  *ngFor="let blogPost of searchResults.blogPosts; let index = index;">
+            <portfolio-blog-post-thumbnail   [blogPost]="blogPost"
+                                            [alternative]="index%2==1">
+            </portfolio-blog-post-thumbnail>
+        </div>
+    </section>
+
+</div>

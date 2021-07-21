@@ -1,0 +1,110 @@
+header {
+    display: block;
+    position:static;
+    color: white;
+    background-color: #c2524c;
+    background: -webkit-linear-gradient(top, #c7504a 0%,#c2524c 100%);
+    background: linear-gradient(to bottom, #c7504a 0%,#c2524c 100%);
+}
+.content {
+    padding: 2rem;
+    display: block;
+}
+portfolio-header-menu {
+    display: block;
+}
+h1, h1 * {
+    font-weight: 300;
+    font-size: 1.4rem;
+    display: inline-block;
+    margin: 0.3rem 0;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 3.5rem;
+    margin: 0;
+    display: inline-block;
+    text-align: justify;
+}
+h3 {
+    font-weight: 300;
+    font-size: 18pt;
+    margin: 1rem 0;
+    display: inline-block;
+    text-align: justify;
+}
+strong {
+    color: #fed56d;
+}
+#greeting {
+    width: 50%;
+    text-align: right;
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
+    display: inline-block;
+    vertical-align: middle;
+}
+#me {
+    width: 49%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+#greetingContent, #meContent {
+    margin: 3rem 0;
+    display: inline-block;
+}
+#greetingContent {
+    width: 370px;
+    text-align: left;
+}
+#greetingContent h2, #greeting h3 {
+    max-width: 400px;
+}
+#meContent {
+    text-align: center;
+}
+#meContent img {
+    max-height: 200px;
+    max-width: 400px;
+}
+
+.arrow_box {
+    position: relative;
+}
+.arrow_box:after, .arrow_box:before {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-top-color: #c2524c;
+    border-width: 30px;
+    margin-left: -30px;
+}
+.arrow_box:before {
+    border-top-color: #c2524c;
+    border-width: 36px;
+    margin-left: -36px;
+}
+
+@media only screen and (max-width: 800px) {
+    #greeting, #greeting h2, #greeting h3 {
+        width: 100%;
+        text-align: center;
+    }
+    #greetingContent {
+        width: 100%;
+        text-align: center;
+    }
+    #me {
+        display: none;
+    }
+}

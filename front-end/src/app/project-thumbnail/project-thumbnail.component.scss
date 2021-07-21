@@ -1,0 +1,35 @@
+.table {
+    display: block;
+    table-layout: fixed;
+    vertical-align: middle;
+}
+.table.two-cells .cell {
+    display: inline-block;
+    width: 47%;
+    vertical-align: middle;
+}
+.table.two-cells .cell:nth-child(1) {
+    padding-right: 3%;
+}
+.table.two-cells .cell:nth-child(2) {
+    padding-left: 3%;
+}
+.medium img {
+    max-width: 100%;
+}
+.medium {
+    text-align: center;
+}
+@media only screen and (max-width: 800px) {
+    .table.two-cells .cell {
+        display: block;
+        width: 100%;
+        padding: 0;
+    }
+    .table.two-cells .cell:nth-child(1) {
+        padding: 0;
+    }
+    .table.two-cells .cell:nth-child(2) {
+        padding-left: 0;
+    }
+}

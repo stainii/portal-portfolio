@@ -1,0 +1,6 @@
+<div *ngIf="blogPost">
+    <h2>{{blogPost.name}}</h2>
+    <p class="publishDate">{{blogPost.publishDate | date}}</p>
+    <p class="description"><markdown [data]="blogPost.description"></markdown></p>
+    <button (click)="goToBlogPost(blogPost)">Continue reading</button>
+</div>

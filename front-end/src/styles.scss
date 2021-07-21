@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:100,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,600,600i,700,700i');
+
+html, body {
+    font-family: 'Raleway', sans-serif;
+    color: #5f5f5f;
+    line-height: 1.5rem;
+    background-color: white;
+    height: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+    line-height: initial;
+}
+h1 {
+    font-weight: 100;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+h2 {
+    font-size: 1.5rem;
+}
+h3 {
+    font-size: 1.3rem;
+}
+h4 {
+    font-size: 1.1rem;
+}
+h5 {
+    font-size: 1rem;
+    text-decoration: underline;
+}
+portfolio-root {
+    min-height: 100%;
+}
+img, video {
+    border-radius: 5px;
+}
+
+a:link {
+    color: #5f5f5f;
+    text-decoration: underline;
+}
+a:visited {
+    color: #5f5f5f;
+    text-decoration: underline;
+}
+a:hover {
+    color: #5f5f5f;
+    text-decoration: underline;
+}
+a:active {
+    color: #5f5f5f;
+    text-decoration: underline;
+}
+
+header a:link {
+    color: #ffffff;
+    text-decoration: none;
+}
+header a:visited {
+    color: #ffffff;
+    text-decoration: none;
+}
+header a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+header a:active {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.emptySpaceForHeader {
+    height: 70px;
+}
+
+p {
+    text-align: justify;
+}
+
+input:disabled {
+    cursor: not-allowed;
+}
+input[type="submit"]:disabled {
+    cursor: not-allowed;
+}
+
+/*http://stackoverflow.com/questions/2781549/removing-input-background-colour-for-chrome-autocomplete*/
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+/*http://stackoverflow.com/questions/5939341/firefox-4-is-there-a-way-to-remove-the-red-border-in-a-required-form-input*/
+input:required {
+    box-shadow:none;
+}
+input:invalid {
+    box-shadow:0 0 0 red;
+}
+input:-moz-placeholder {
+    box-shadow:none !important;
+}
+img.small {
+    min-width: 50px;
+    max-width: 50px;
+    margin: 20px;
+}
+table.comparison {
+    border-collapse: collapse;
+    margin: 2em 0;
+}
+table.comparison th {
+    border-bottom: #c2524c 3px solid;
+    color: #c2524c;
+    border-left: solid 30px white;
+    border-right: solid 30px white;
+    padding: 8px 2px;
+}
+table.comparison td {
+    padding: 8px 2px;
+    border-left: solid 30px white;
+    border-right: solid 30px white;
+}
+
+blockquote {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-style: italic;
+    margin: 0.25em 0;
+    padding: 0.25em 40px;
+    line-height: 1.45;
+    position: relative;
+    color: #383838;
+}
+blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 80px;
+    position: absolute;
+    left: -20px;
+    top: -20px;
+    color: #7a7a7a;
+}
+blockquote cite {
+    color: #999999;
+    font-size: 14px;
+    display: block;
+    margin-top: 5px;
+}
+
+blockquote cite:before {
+    content: "\2014 \2009";
+}
+
+.haveSomeTopMargin {
+    margin-top: 3em;
+}
+.smallLogo {
+    width: auto !important;
+    max-height: 100px !important;
+    display: inline-block !important;
+    margin: 2px 25px;
+}
+.code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 10px;
+}
+.important {
+    color: red;
+    font-weight: bold;
+}
+
+/** start spinner **/
+.spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -27px;
+    width: 70px;
+}
+
+.spinner > div {
+    width: 18px;
+    height: 18px;
+    background-color: #aaa;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+    0%, 80%, 100% { -webkit-transform: scale(0) }
+    40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    } 40% {
+          -webkit-transform: scale(1.0);
+          transform: scale(1.0);
+      }
+}
+/** end spinner **/
+
+/** start markdown-specific rules **/
+markdown {
+    blockquote {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    h2, h3, h4, h5 {
+        margin-top: 30px;
+    }
+    code.no-wrap {
+        display: block;
+        white-space: nowrap;
+        overflow-y: auto;
+    }
+    .mark-red {
+        background-color: red;
+        color: white;
+    }
+    .mark-blue {
+        background-color: blue;
+        color: white;
+    }
+    .mark-green {
+        background-color: green;
+        color: white;
+    }
+    .mark-yellow {
+        background-color: yellow;
+        color: black;
+    }
+}
+@media only screen and (min-width: 500px) {
+    table {
+        th, td {
+            padding: 15px;
+        }
+        th {
+            background-color: #b75b5ba8;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #eeeeee;
+        }
+    }
+
+    markdown {
+        img {
+            white-space: pre;
+            max-width: 100%;
+            margin: 10px 1%;
+        }
+
+        video {
+            white-space: pre;
+            max-width: 100%;
+            margin: 10px 1%;
+        }
+
+        img[src*="#two-on-a-line"]:first-of-type {
+            white-space: pre;
+        }
+
+        img[src*="#two-on-a-line"] {
+            width: 48%;
+            margin: 10px 1%;
+        }
+
+        img[src*="#three-on-a-line"]:first-of-type {
+            white-space: pre;
+        }
+
+        img[src*="#three-on-a-line"] {
+            width: 30%;
+            margin: 1% 10px;
+        }
+
+        .big-right, img[src*="#big-right"] {
+            max-width: 500px;
+            margin-left: 20px;
+            float: right;
+        }
+
+    }
+
+}
+@media only screen and (max-width: 600px) {
+    markdown {
+        img {
+            white-space: pre;
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        video {
+            white-space: pre;
+            max-width: 100%;
+            margin: 10px 0;
+        }
+
+        img[src*="#two-on-a-line"] {
+            width: 100%;
+            display: block;
+            margin: 10px 0;
+        }
+
+        img[src*="#three-on-a-line"] {
+            width: 100%;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .big-right, img[src*="#big-right"] {
+            width: 100%;
+            display: block;
+            margin: 10px 0;
+        }
+    }
+}
+/** end markdown-specific rules **/
+
+
+/** start slideshow **/
+#slideshow {
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.slide-wrapper {
+    -webkit-animation: slide 18s ease infinite;
+}
+
+.slide {
+    float: left;
+}
+
+.slide img {
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+}
+
+@media only screen and (min-width:800px) {
+    #slideshow {
+        float: right;
+        margin-left: 30px;
+    }
+
+    .text {
+        min-height: 350px;
+    }
+}
+
+@media only screen and (min-width:500px) {
+    #slideshow {
+        width: 500px;
+        height: 300px;
+    }
+
+    .slide-wrapper {
+        width: 2000px;
+    }
+
+    .slide {
+        height: 300px;
+        width: 500px;
+        line-height: 300px;
+    }
+
+    .slide img {
+        width: 500px;
+    }
+
+    @-webkit-keyframes slide {
+        20% {margin-left: 0;}
+        30% {margin-left: -500px;}
+        50% {margin-left: -500px;}
+        60% {margin-left: -1000px;}
+        70% {margin-left: -1000px;}
+        80% {margin-left: -1500px;}
+        90% {margin-left: -1500px;}
+    }
+}
+
+@media only screen and (max-width:500px) {
+    #slideshow {
+        width: 300px;
+        height: 200px;
+    }
+
+    .slide-wrapper {
+        width: 1200px;
+    }
+
+    .slide {
+        height: 200px;
+        width: 300px;
+        line-height: 200px;
+    }
+
+    .slide img {
+        width: 300px;
+    }
+
+    @-webkit-keyframes slide {
+        20% {margin-left: 0;}
+        30% {margin-left: -300px;}
+        50% {margin-left: -300px;}
+        60% {margin-left: -600px;}
+        70% {margin-left: -600px;}
+        80% {margin-left: -900px;}
+        90% {margin-left: -900px;}
+    }
+
+}
+/** end slideshow **/
