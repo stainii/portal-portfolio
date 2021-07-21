@@ -47,12 +47,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <!-- default parameters used in the application. Override these with a Maven profile -->
-        <environment>dev</environment>
-        <npm-build-command>run build</npm-build-command>
-
-        <!-- versions of dependencies -->
         <java.version>11</java.version>
         <maven.resources.plugin.version>3.0.2</maven.resources.plugin.version>
         <maven.war.plugin.version>3.0.0</maven.war.plugin.version>
@@ -172,52 +166,6 @@
             </plugin>
 
             <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.4</version>
-                <configuration>
-                    <nodeVersion>v12.13.0</nodeVersion>
-                    <npmVersion>6.13.2</npmVersion>
-                    <workingDirectory>src/main/web/</workingDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>install node and npm</id>
-                        <goals>
-                            <goal>install-node-and-npm</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>npm install</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <phase>compile</phase>
-                    </execution>
-                    <execution>
-                        <id>npm test</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run test-once</arguments>
-                        </configuration>
-                        <phase>test</phase>
-                    </execution>
-                    <execution>
-                        <id>${npm-build-command}</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>${npm-build-command}</arguments>
-                        </configuration>
-                        <phase>prepare-package</phase>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <groupId>external.atlassian.jgitflow</groupId>
                 <artifactId>jgitflow-maven-plugin</artifactId>
                 <version>1.0-m5.1</version>
@@ -238,10 +186,6 @@
     <profiles>
         <profile>
             <id>production</id>
-            <properties>
-                <environment>production</environment>
-                <npm-build-command>run build-prod</npm-build-command>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
