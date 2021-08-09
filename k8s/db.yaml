@@ -1,0 +1,137 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: portal-portfolio-db-data-pv-storage
+  labels:
+    type: local
+    clustername: portal-volumes
+spec:
+  storageClassName: local-storage
+  volumeMode: Filesystem
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/Users/stijnhooft/app/portal/portfolio/db/data"
+#  local:
+#    #path: "/home/stijn/portal/portfolio/db/data"
+#    path: "/Users/stijnhooft/app/portal/portfolio/db/data"
+#  nodeAffinity:
+#    required:
+#      nodeSelectorTerms:
+#        - matchExpressions:
+#            - key: kubernetes.io/hostname
+#              operator: In
+#              values:
+#                - microk8s-vm
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: portal-portfolio-db-init-pv-storage
+  labels:
+    type: local
+    clustername: portal-volumes
+spec:
+  storageClassName: local-storage
+  capacity:
+    storage: 1Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadOnlyMany
+  hostPath:
+    path: "/Users/stijnhooft/projecten/portal/portal-portfolio/docker-entrypoint-initdb.d"
+#  local:
+#    #path: "/home/stijn/portal/portfolio/db/docker-entrypoint-initdb.d"
+#    path: "/Users/stijnhooft/projecten/portal/portal-portfolio/docker-entrypoint-initdb.d"
+#  nodeAffinity:
+#    required:
+#      nodeSelectorTerms:
+#        - matchExpressions:
+#            - key: kubernetes.io/hostname
+#              operator: In
+#              values:
+#                - microk8s-vm
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: portal-portfolio-db-data-pv-claim
+spec:
+  storageClassName: local-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: portal-portfolio-db-init-pv-claim
+spec:
+  storageClassName: local-storage
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-portfolio-db
+spec:
+  selector:
+    matchLabels:
+      app: portal-portfolio-db
+  template:
+    metadata:
+      labels:
+        app: portal-portfolio-db
+    spec:
+      containers:
+        - name: portal-portfolio-db
+          image: mongo:4.0.6
+          ports:
+            - containerPort: 27017
+          env:
+            - name: MONGODB_PASS
+              value: "test123"
+            - name: MONGODB_USER
+              value: "portal-portfolio-db"
+            - name: MONGO_INITDB_DATABASE
+              value: "portfolio"
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: "test124"
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: "portal-portfolio-db"
+          resources:
+            limits:
+              memory: "400Mi"
+          volumeMounts:
+            - mountPath: "/data/db"
+              name: portal-portfolio-db-data-pv-storage
+            - mountPath: "/docker-entrypoint-initdb.d"
+              name: portal-portfolio-db-init-pv-storage
+      volumes:
+        - name: portal-portfolio-db-data-pv-storage
+          persistentVolumeClaim:
+            claimName: portal-portfolio-db-data-pv-claim
+        - name: portal-portfolio-db-init-pv-storage
+          persistentVolumeClaim:
+            claimName: portal-portfolio-db-init-pv-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal-portfolio-db-service
+spec:
+  ports:
+    - port: 27017
+      targetPort: 27017
+      nodePort: 30000
+  type: NodePort
+  selector:
+    app: portal-portfolio-db

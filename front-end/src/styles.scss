@@ -338,7 +338,7 @@ markdown {
 
 
 /** start slideshow **/
-#slideshow {
+.slideshow {
     overflow: hidden;
     margin: 0 auto;
 }
@@ -358,7 +358,7 @@ markdown {
 }
 
 @media only screen and (min-width:800px) {
-    #slideshow {
+    .slideshow {
         float: right;
         margin-left: 30px;
     }
@@ -369,7 +369,7 @@ markdown {
 }
 
 @media only screen and (min-width:500px) {
-    #slideshow {
+    .slideshow {
         width: 500px;
         height: 300px;
     }
@@ -400,7 +400,7 @@ markdown {
 }
 
 @media only screen and (max-width:500px) {
-    #slideshow {
+    .slideshow {
         width: 300px;
         height: 200px;
     }

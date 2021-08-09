@@ -1,9 +1,9 @@
 package be.stijnhooft.portal.portfolio.model;
 
 import be.stijnhooft.portal.portfolio.mothers.BlogPostMother;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BlogPostTest {
 

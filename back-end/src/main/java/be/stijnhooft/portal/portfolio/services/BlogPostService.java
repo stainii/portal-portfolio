@@ -19,7 +19,7 @@ public class BlogPostService {
 
     private final BlogPostRepository blogPostRepository;
 
-    @Value("${spring.profiles.active}")
+    @Value("${spring.profiles.active:production}")
     protected String profile;
 
     @Autowired

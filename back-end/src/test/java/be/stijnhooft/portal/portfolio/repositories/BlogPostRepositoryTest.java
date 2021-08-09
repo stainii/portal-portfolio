@@ -2,36 +2,29 @@ package be.stijnhooft.portal.portfolio.repositories;
 
 import be.stijnhooft.portal.portfolio.model.BlogPost;
 import be.stijnhooft.portal.portfolio.mothers.BlogPostMother;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.data.mongodb.core.query.TextCriteria;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataMongoTest
-@RunWith(SpringRunner.class)
-@TestPropertySource("classpath:application-test.properties")
 public class BlogPostRepositoryTest {
 
     @Autowired
     private BlogPostRepository blogPostRepository;
 
-    @Before
+    @BeforeEach
     public void init() {
         blogPostRepository.deleteAll();
     }
-
-
 
     @Test
     public void findByIdWhenSuccess() {
@@ -65,8 +58,8 @@ public class BlogPostRepositoryTest {
         BlogPost blogPost = BlogPostMother.complete();
         blogPostRepository.save(blogPost);
 
-        assertEquals(Arrays.asList(blogPost), blogPostRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny(blogPost.getTags().get(0))));
-        assertEquals(Arrays.asList(blogPost), blogPostRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny(blogPost.getTags().get(1))));
+        assertEquals(List.of(blogPost), blogPostRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny(blogPost.getTags().get(0))));
+        assertEquals(List.of(blogPost), blogPostRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny(blogPost.getTags().get(1))));
     }
 
     @Test
@@ -123,7 +116,7 @@ public class BlogPostRepositoryTest {
         List<BlogPost> result = blogPostRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("log", "in"));
 
         // then
-        assertEquals(Arrays.asList(blogPost), result);
+        assertEquals(List.of(blogPost), result);
     }
 
     @Test
@@ -136,7 +129,7 @@ public class BlogPostRepositoryTest {
         List<BlogPost> result = blogPostRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("log", "wooooooow"));
 
         // then
-        assertEquals(Arrays.asList(blogPost), result);
+        assertEquals(List.of(blogPost), result);
     }
 
     @Test
@@ -149,7 +142,7 @@ public class BlogPostRepositoryTest {
         List<BlogPost> result = blogPostRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("[description]"));
 
         // then
-        assertEquals(Arrays.asList(blogPost), result);
+        assertEquals(List.of(blogPost), result);
     }
 
     @Test
@@ -162,7 +155,7 @@ public class BlogPostRepositoryTest {
         List<BlogPost> result = blogPostRepository.findAllBy(TextCriteria.forDefaultLanguage().matchingAny("something"));
 
         // then
-        assertEquals(Arrays.asList(blogPost), result);
+        assertEquals(List.of(blogPost), result);
     }
 
     @Test

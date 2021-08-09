@@ -2,31 +2,30 @@ package be.stijnhooft.portal.portfolio.repositories;
 
 import be.stijnhooft.portal.portfolio.model.Project;
 import be.stijnhooft.portal.portfolio.mothers.ProjectMother;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.data.mongodb.core.query.TextCriteria;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 @DataMongoTest
-@RunWith(SpringRunner.class)
-@TestPropertySource("classpath:application-test.properties")
+@ExtendWith(SpringExtension.class)
 public class ProjectRepositoryTest {
 
     @Autowired
     private ProjectRepository projectRepository;
 
-    @Before
+    @BeforeEach
     public void init() {
         projectRepository.deleteAll();
     }

@@ -1,0 +1,26 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+metadata:
+  name: portal-portfolio
+build:
+  artifacts:
+    - image: stainii/portal-portfolio
+      context: back-end
+      buildpacks:
+        builder: paketobuildpacks/builder:base
+    - image: stainii/portal-portfolio-front-end
+      context: front-end
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+      - k8s/app.yaml
+      - k8s/db.yaml
+profiles:
+  - name: db
+    patches:
+      - op: replace
+        path: /deploy/kubectl/manifests
+        value:
+          - k8s/db.yaml

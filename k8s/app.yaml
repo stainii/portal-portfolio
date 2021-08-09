@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portal-portfolio
+spec:
+  selector:
+    matchLabels:
+      app: portal-portfolio
+  template:
+    metadata:
+      labels:
+        app: portal-portfolio
+    spec:
+      containers:
+        - name: portal-portfolio-back-end
+          image: stainii/portal-portfolio:1.0.1
+          ports:
+            - containerPort: 27017
+          env:
+            - name: DATABASE_HOST_PORTFOLIO
+              value: "portal-portfolio-db-service"
+            - name: DATABASE_NAME_PORTFOLIO
+              value: "portfolio"
+            - name: DATABASE_PASSWORD_PORTFOLIO
+              value: "test124"
+            - name: DATABASE_PORT_PORTFOLIO
+              value: "27017"
+            - name: DATABASE_USERNAME_PORTFOLIO
+              value: "portal-portfolio-db"
+            - name: JWT_SECRET
+              value: "stijnisdebeste"
+            - name: EUREKA_SERVICE_URL
+              value: "http://portal-eureka:8761/eureka"
+            - name: BPL_JVM_THREAD_COUNT
+              value: "10" # Lowering the expected thread count so that the build pack does not complain about the limited memory. I hope this is ok, since the application is not too heavily used.
+          resources:
+            limits:
+              memory: "450Mi"
+              cpu: "250m"
+        - name: portal-portfolio-front-end
+          image: stainii/portal-portfolio-front-end:1.1.0-SNAPSHOT
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              memory: "50Mi"
+              cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal-portfolio-front-end-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30001
+  type: NodePort
+  selector:
+    app: portal-portfolio
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portal-portfolio-back-end-service
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30002
+  type: NodePort
+  selector:
+    app: portal-portfolio
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portal-portfolio-ingress
+spec:
+  defaultBackend:
+    service:
+      name: portal-portfolio-front-end-service
+      port:
+        number: 80
+  rules:
+    - http:
+        paths:
+          - path: /api
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: portal-portfolio-back-end-service
+                port:
+                  number: 8080
